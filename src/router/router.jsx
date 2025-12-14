@@ -5,6 +5,7 @@ import Services from "../Pages/Service/Services";
 import ProjectsSection from "../Pages/Projects/ProjectsSection";
 import FAQSection from "../Pages/FAQ/FAQSection.jsx";
 import ContactSection from "../Pages/Contact/ContactSection.jsx";
+import ManagementTeam from "../Pages/Management/ManagementTeam.jsx";
 
 
 
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: "/projects",
         element : <ProjectsSection></ProjectsSection>
+      },
+      {
+        path: "/team",
+        element : <ManagementTeam></ManagementTeam>
       },
       {
         path: "/FAQ",

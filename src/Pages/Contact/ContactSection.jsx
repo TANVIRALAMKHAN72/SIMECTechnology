@@ -2,11 +2,11 @@ import React, { useRef, useEffect, useState } from "react";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import mdImage from "../../assets/13.12.2025_16.48.51_REC.png"; // Managing Director image path
 
 const ContactSection = () => {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,19 +27,24 @@ const ContactSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+
+    const { name, email, subject, message } = formData;
+
+    if (!name || !email || !subject || !message) {
       toast.error("Please fill in all fields.");
       return;
     }
 
     const emailRegex = /\S+@\S+\.\S+/;
-    if (!emailRegex.test(formData.email)) {
+    if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address.");
       return;
     }
@@ -61,37 +66,52 @@ const ContactSection = () => {
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        {/* LEFT - Managing Director Info */}
+        {/* LEFT - Contact Information */}
         <div className="space-y-6 flex flex-col items-center lg:items-start">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Managing Director</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-2">
+            Contact Information
+          </h2>
 
-          <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-lg mb-4">
-            <img
-              src={mdImage}
-              alt="Managing Director"
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <p className="text-gray-600 text-center lg:text-left max-w-md">
+            You can visit our office locations or contact us directly using the
+            information below.
+          </p>
 
-          <div className="text-center lg:text-left">
-            <h3 className="text-2xl font-semibold text-primary mb-1">
-              Engr. Mohammad Abdus Salam Khan
-            </h3>
-            <p className="text-gray-600 mb-1">FIEB, FEWA, ELB, BSc in EEE</p>
-          </div>
+          <div className="space-y-5 mt-4">
+            {/* Head Office */}
+            <div className="flex items-start gap-3 text-gray-700">
+              <MapPin className="w-6 h-6 text-primary mt-1" />
+              <div>
+                <h4 className="font-semibold text-gray-800">Head Office</h4>
+                <p>
+                  Noakhali Tower (4th Floor), 55/B, <br />
+                  Purana Paltan, Dhaka-1000
+                </p>
+              </div>
+            </div>
 
-          <div className="space-y-3">
+            {/* Branch Office */}
+            <div className="flex items-start gap-3 text-gray-700">
+              <MapPin className="w-6 h-6 text-primary mt-1" />
+              <div>
+                <h4 className="font-semibold text-gray-800">Branch Office</h4>
+                <p>
+                  House # D-9, South Banasree, <br />
+                  Khilgaon, Dhaka-1219
+                </p>
+              </div>
+            </div>
+
+            {/* Phone */}
             <div className="flex items-center gap-3 text-gray-700">
               <Phone className="w-6 h-6 text-primary" />
-              <span>01919822952</span>
+              <span>01551-506552</span>
             </div>
+
+            {/* Email */}
             <div className="flex items-center gap-3 text-gray-700">
               <Mail className="w-6 h-6 text-primary" />
-              <span>engrsalamkhan2@yahoo.com</span>
-            </div>
-            <div className="flex items-center gap-3 text-gray-700">
-              <MapPin className="w-6 h-6 text-primary" />
-              <span>Noakhail Tower (4th Floor) 55/B, Purana Paltan, Dhaka-1000</span>
+              <span>simecbdltd@yahoo.com</span>
             </div>
           </div>
         </div>
@@ -117,6 +137,7 @@ const ContactSection = () => {
                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
+
             <input
               type="text"
               name="subject"
@@ -125,6 +146,7 @@ const ContactSection = () => {
               onChange={handleChange}
               className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
+
             <textarea
               name="message"
               value={formData.message}
@@ -133,6 +155,7 @@ const ContactSection = () => {
               onChange={handleChange}
               className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             ></textarea>
+
             <button
               type="submit"
               className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-xl font-medium shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out"

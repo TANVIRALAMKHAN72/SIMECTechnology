@@ -46,6 +46,19 @@ const Navber = () => {
 
       <li>
         <NavLink
+          to="/team"
+          className={({ isActive }) =>
+            isActive
+              ? "font-semibold text-primary border-b-2 border-primary pb-1"
+              : "hover:text-primary transition text-lg"
+          }
+        >
+          Team
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
           to="/FAQ"
           className={({ isActive }) =>
             isActive
