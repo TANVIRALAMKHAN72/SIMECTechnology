@@ -59,14 +59,14 @@ const ManagementTeam = () => {
           <div className="w-36 h-36 mx-auto rounded-full overflow-hidden shadow mb-5">
             <img src={operationImg} alt="Operation Executive" className="w-full h-full object-cover" />
           </div>
-          <h3 className="text-xl font-semibold">Mozahid Al Talib</h3>
+          <h3 className="text-xl font-semibold">Engr. Mozahid Al Talib</h3>
           <p className="text-primary font-medium">Operation Executive</p>
           <p className="text-gray-600 text-sm mt-2">
             Operations & Project Coordination
           </p>
           <div className="flex justify-center items-center gap-2 mt-4 text-gray-700">
             <Phone className="w-5 h-5 text-primary" />
-            <span>01897586265</span>
+            <span>01897586245</span>
           </div>
         </div>
 
